@@ -148,12 +148,12 @@ app.post('/api/v1/on-covid-19/xml', (req, res) => {
 
 app.get('//logs', (req, res) => {
   res.type('text');
-  res.sendFile(path.resolve(__dirname, "requests.log"));
+  res.sendFile(path.resolve(__dirname, "requests.txt"));
 });
 
 app.get('/api/v1/on-covid-19/logs', (req, res) => {
   res.type('text');
-  res.sendFile(path.resolve(__dirname, "requests.log"));
+  res.sendFile(path.resolve(__dirname, "requests.txt"));
 });
 
 app.listen(process.env.PORT || 5000, () => {
