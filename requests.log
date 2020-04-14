@@ -12,3 +12,15 @@ GET /api/v1/on-covid-19/logs 200 10.311 ms
 GET /api/v1/on-covid-19/ 404 2.004 ms
 GET /api/v1/on-covid-19/ 404 2.957 ms
 GET /api/v1/on-covid-19/json 500 9.469 ms
+GET /api/v1/on-covid-19/json 500 20.437 ms
+GET /api/v1/on-covid-19/json 500 4.311 ms
+GET /api/v1/on-covid-19/json 500 0.517 ms
+GET /api/v1/on-covid-19/json 500 5.114 ms
+GET /api/v1/on-covid-19/json 500 5.999 ms
+GET /api/v1/on-covid-19/xml 500 110.430 ms
+GET /api/v1/on-covid-19/xml 200 37.645 ms
+GET /favicon.ico 404 2.070 ms
+GET /api/v1/on-covid-19/ 404 2.915 ms
+GET /api/v1/on-covid-19/json 200 5.086 ms
+GET /api/v1/on-covid-19/xml 304 1.845 ms
+GET /api/v1/on-covid-19/json 304 0.534 ms

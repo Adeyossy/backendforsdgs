@@ -9,6 +9,20 @@ const morgan = require('morgan');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+const buildforsdg = {
+  region: {
+    name: "Africa",
+    avgAge: 19.7,
+    avgDailyIncomeInUSD: 5,
+    avgDailyIncomePopulation: 0.71
+  },
+  periodType: "days",
+  timeToElapse: 58,
+  reportedCases: 674,
+  population: 66622705,
+  totalHospitalBeds: 1380614
+};
+
 function calcIBRT(currentlyInfected, timeToElapse) {
   return currentlyInfected * 2 ** Math.trunc(timeToElapse / 3);
 }
@@ -77,25 +91,31 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, 'requests.log'
 app.use(morgan(':method :url :status :response-time ms', { stream: accessLogStream }));
 
 app.post('/api/v1/on-covid-19/', (req, res) => {
-  const data = req.body.data;
+  let data = {};
+  if(req.body.data) data = req.body.data; 
+  else data = buildforsdg;
   const output = JSON.stringify(covid19ImpactEstimator(data));
 
   res.sendFile(output);
 });
 
 app.get('/api/v1/on-covid-19/json', (req, res) => {
-  const data = req.body.data;
+  let data = {};
+  if(req.body.data) data = req.body.data; 
+  else data = buildforsdg;
   const output = JSON.stringify(covid19ImpactEstimator(data));
 
-  res.sendFile(output);
+  res.send(output);
 });
 
 app.get('/api/v1/on-covid-19/xml', (req, res) => {
-  const data = req.body.data;
+  let data = {};
+  if(req.body.data) data = req.body.data; 
+  else data = buildforsdg;
   const output = JSON.stringify(covid19ImpactEstimator(data));
 
   res.type('xml');
-  res.sendFile(jsontoxml(output));
+  res.send(jsontoxml(output));
 });
 
 app.get('/api/v1/on-covid-19/logs', (req, res) => {
