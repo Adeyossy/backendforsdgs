@@ -90,16 +90,7 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, 'requests.log'
 // setup the logger
 app.use(morgan(':method :url :status :response-time ms', { stream: accessLogStream }));
 
-app.post('/api/v1/on-covid-19/', (req, res) => {
-  let data = {};
-  if(req.body.data) data = req.body.data; 
-  else data = buildforsdg;
-  const output = JSON.stringify(covid19ImpactEstimator(data));
-
-  res.sendFile(output);
-});
-
-app.get('/api/v1/on-covid-19/json', (req, res) => {
+app.post('/', (req, res) => {
   let data = {};
   if(req.body.data) data = req.body.data; 
   else data = buildforsdg;
@@ -108,7 +99,34 @@ app.get('/api/v1/on-covid-19/json', (req, res) => {
   res.send(output);
 });
 
-app.get('/api/v1/on-covid-19/xml', (req, res) => {
+app.post('//json', (req, res) => {
+  let data = {};
+  if(req.body.data) data = req.body.data; 
+  else data = buildforsdg;
+  const output = JSON.stringify(covid19ImpactEstimator(data));
+
+  res.send(output);
+});
+
+app.post('/api/v1/on-covid-19/', (req, res) => {
+  let data = {};
+  if(req.body.data) data = req.body.data; 
+  else data = buildforsdg;
+  const output = JSON.stringify(covid19ImpactEstimator(data));
+
+  res.send(output);
+});
+
+app.post('/api/v1/on-covid-19/json', (req, res) => {
+  let data = {};
+  if(req.body.data) data = req.body.data; 
+  else data = buildforsdg;
+  const output = JSON.stringify(covid19ImpactEstimator(data));
+
+  res.send(output);
+});
+
+app.post('//xml', (req, res) => {
   let data = {};
   if(req.body.data) data = req.body.data; 
   else data = buildforsdg;
@@ -116,6 +134,21 @@ app.get('/api/v1/on-covid-19/xml', (req, res) => {
 
   res.type('xml');
   res.send(jsontoxml(output));
+});
+
+app.post('/api/v1/on-covid-19/xml', (req, res) => {
+  let data = {};
+  if(req.body.data) data = req.body.data; 
+  else data = buildforsdg;
+  const output = JSON.stringify(covid19ImpactEstimator(data));
+
+  res.type('xml');
+  res.send(jsontoxml(output));
+});
+
+app.get('//logs', (req, res) => {
+  res.type('text');
+  res.sendFile(path.resolve(__dirname, "requests.log"));
 });
 
 app.get('/api/v1/on-covid-19/logs', (req, res) => {
