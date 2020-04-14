@@ -8,3 +8,7 @@ GET /api/v1/on-covid-19/xml 404 0.229 ms
 GET /api/v1/on-covid-19/ 404 0.235 ms
 GET /api/v1/on-covid-19/xml 404 0.242 ms
 GET /api/v1/on-covid-19/logs 200 8.102 ms
+GET /api/v1/on-covid-19/logs 200 10.311 ms
+GET /api/v1/on-covid-19/ 404 2.004 ms
+GET /api/v1/on-covid-19/ 404 2.957 ms
+GET /api/v1/on-covid-19/json 500 9.469 ms

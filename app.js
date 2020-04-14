@@ -83,14 +83,14 @@ app.post('/api/v1/on-covid-19/', (req, res) => {
   res.sendFile(output);
 });
 
-app.post('/api/v1/on-covid-19/json', (req, res) => {
+app.get('/api/v1/on-covid-19/json', (req, res) => {
   const data = req.body.data;
   const output = JSON.stringify(covid19ImpactEstimator(data));
 
   res.sendFile(output);
 });
 
-app.post('/api/v1/on-covid-19/xml', (req, res) => {
+app.get('/api/v1/on-covid-19/xml', (req, res) => {
   const data = req.body.data;
   const output = JSON.stringify(covid19ImpactEstimator(data));
 
