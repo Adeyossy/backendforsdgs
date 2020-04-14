@@ -4,12 +4,12 @@
   "description": "Backend for buildforSDGs",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node app.js",
     "test": "nodemon app.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Adeyossy/backendforsdgs.git"
+    "url": "https://github.com/Adeyossy/backendforsdgs.git"
   },
   "keywords": [
     "back",
