@@ -85,14 +85,14 @@ const covid19ImpactEstimator = (data) => {
   return output;
 };
 
-const accessLogStream = fs.createWriteStream(path.join(__dirname, 'requests.log'), { flags: 'a' });
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'requests.txt'), { flags: 'a' });
 
 // setup the logger
 app.use(morgan(':method :url :status :response-time ms', { stream: accessLogStream }));
 
 app.post('/', (req, res) => {
   let data = {};
-  if(req.body.data) data = req.body.data; 
+  if(req.body) data = req.body; 
   else data = buildforsdg;
   const output = JSON.stringify(covid19ImpactEstimator(data));
 
@@ -101,7 +101,7 @@ app.post('/', (req, res) => {
 
 app.post('//json', (req, res) => {
   let data = {};
-  if(req.body.data) data = req.body.data; 
+  if(req.body) data = req.body; 
   else data = buildforsdg;
   const output = JSON.stringify(covid19ImpactEstimator(data));
 
@@ -110,7 +110,7 @@ app.post('//json', (req, res) => {
 
 app.post('/api/v1/on-covid-19/', (req, res) => {
   let data = {};
-  if(req.body.data) data = req.body.data; 
+  if(req.body) data = req.body; 
   else data = buildforsdg;
   const output = JSON.stringify(covid19ImpactEstimator(data));
 
@@ -119,7 +119,7 @@ app.post('/api/v1/on-covid-19/', (req, res) => {
 
 app.post('/api/v1/on-covid-19/json', (req, res) => {
   let data = {};
-  if(req.body.data) data = req.body.data; 
+  if(req.body) data = req.body; 
   else data = buildforsdg;
   const output = JSON.stringify(covid19ImpactEstimator(data));
 
@@ -128,7 +128,7 @@ app.post('/api/v1/on-covid-19/json', (req, res) => {
 
 app.post('//xml', (req, res) => {
   let data = {};
-  if(req.body.data) data = req.body.data; 
+  if(req.body) data = req.body; 
   else data = buildforsdg;
   const output = JSON.stringify(covid19ImpactEstimator(data));
 
@@ -138,7 +138,7 @@ app.post('//xml', (req, res) => {
 
 app.post('/api/v1/on-covid-19/xml', (req, res) => {
   let data = {};
-  if(req.body.data) data = req.body.data; 
+  if(req.body) data = req.body; 
   else data = buildforsdg;
   const output = JSON.stringify(covid19ImpactEstimator(data));
 
